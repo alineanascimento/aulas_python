@@ -33,8 +33,15 @@ def completar_tarefa(tarefas, indice):
     else:
         print("Índice inválido.")
     return
+def deletar_tarefas_completadas(tarefas):
+    for tarefa in tarefas:
+        if tarefa["completa"]:
+            tarefas.remove(tarefa)
+            print(f"Tarefa '{tarefa['tarefa']}' deletada.")
+    return
 
 tarefas = []
+
 while True:
     print("\n Menu do Gerenciador de Tarefas")
     print("1. Adicionar Tarefa")
@@ -57,6 +64,15 @@ while True:
         atualizar_nome_tarefa(tarefas, indice, novo_nome_tarefa)
         
     elif escolha == "4":
+        ver_tarefas(tarefas)
+        indice = int(input("Digite o número da tarefa que deseja marcar como completa: ")) - 1
+        completar_tarefa(tarefas, indice)
+    elif escolha == "5":
+        deletar_tarefas_completadas(tarefas)
+        ver_tarefas(tarefas)
     elif escolha == "6":
         break
+    
 print("programa encerrado.")
+"""RESOLVER PROBLEMA NO CODIGO ###### NAO ESTA EXIBINDO A OPCAO 2####
+"""
